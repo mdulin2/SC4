@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+	<form onKeyUp="return authenticate()">
+	<h2>Login to find a treasure!</h2>
+	  <div class="imgcontainer">
+		<img src="avatar.jpg" alt="Avatar" class="avatar">
+	  </div>
+
+	  <div class="container">
+		<label for="username"><b>Username</b></label>
+		<input id = "username" type="text" placeholder="Enter Username" name="username" required>
+
+		<label for="psw"><b>Password</b></label>
+		<input id="password" type="text" placeholder="Enter Password" name="password" required>å
+	  </div>
+
+	</form>
+	<div id="flag">
+		
+	</div>
+ </body>
+ 
+<script>
+	function authenticate () {
+		var oReq = new XMLHttpRequest();
+		oReq.onreadystatechange = function() {
+		
+			if (oReq.readyState == XMLHttpRequest.DONE) {
+				// Set the flag into the page 
+				document.getElementById("flag").innerHTML = oReq.responseText;				
+			}
+		}
+		// Get the values from the DOM
+		var username = document.getElementById("username").value; 
+		var password = document.getElementById("password").value;
+		 
+		// Setup the login request
+		var req  = "http://127.0.0.1:8081/login?username=" + username + "&password=" + password 
+		oReq.open("POST", req, true);
+		oReq.send();
+	}
+
+
+</script>

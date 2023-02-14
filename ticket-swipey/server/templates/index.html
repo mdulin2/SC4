@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music⭐Band 2023 World Tour - Swipe yourselves some tickets NOW!</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Codystar&family=Michroma&family=Nabla&family=Supermercado+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+</head>
+<body>
+<div class="container">
+    <div id="buy">
+        <form method="POST" action="/">
+            <input type="hidden" name="quantity" value="1" />
+            <span id="buyform">
+            <button type="submit">
+                <span>BUY!</span>
+            </button>
+            </span>
+        </form>
+    </div>
+    <div class="poster">
+        <div class="logo">
+            <h1>Music~Band</h1>
+            <h2>2023 Tour</h2>
+        </div>
+        <div id="countdown">
+            <div id="timer">
+                <div id="next" style="display: none">Sorry, the tickets were sold out!</div>
+                <div>Next sale:</div>
+                <ul>
+                    <li><span id="hours">0</span>Hours</li>
+                    <li><span id="minutes">0</span>Minutes</li>
+                    <li><span id="seconds"></span>Seconds</li>
+                </ul>
+            </div>
+            <div id="win" style="display: none; font-size: 15vh">🏆</div>
+            <h1 id="headline">Limited presale!<span id="soldout" class="stamp" style="display: none">SOLD OUT</span></h1>
+        </div>
+        <img src="/static/crowd.jpg" />
+    </div>
+</div>
+<script>
+  const tooLate = {{too_late}};
+  const message = '{{flag}}';
+</script>
+<script>
+const elCountdown = document.getElementById('countdown');
+const elBuy = document.getElementById('buy');
+const elHeadline = document.getElementById('headline');
+const elSoldout = document.getElementById('soldout');
+const elTimer = document.getElementById('timer');
+const elNext = document.getElementById('next');
+const elWin = document.getElementById('win');
+
+if (tooLate) {
+  elSoldout.style.display = 'block';
+  elNext.style.display = 'block';
+}
+
+if (message) {
+  elSoldout.style.display = 'none';
+  elBuy.style.display = 'none';
+  elTimer.style.display = 'none';
+  elNext.style.display = 'none';
+  elWin.style.display = 'block';
+  elHeadline.innerHTML = message;
+  setInterval(() => party.confetti(document.body), 500);
+}
+
+elBuy.style.display = 'none';
+
+const showBuyOption = () => {
+    elBuy.style.display = 'block';
+    elCountdown.style.display = 'none';
+    elHeadline.style.display = 'none';
+};
+
+const now = Math.floor(Date.now() / 1000);
+const next = now - (now % 60) + 60;
+
+const loop = !message && setInterval(() => {
+  const now = Math.floor(Date.now() / 1000);
+  const seconds = Math.abs(Math.floor((now - next)));
+
+  if (seconds <= 0) {
+    clearInterval(loop);
+    showBuyOption();
+  }
+
+  document.getElementById("seconds").innerText = seconds;
+}, 100);
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./css/main-snake.css">
+        <title>Snake Login</title>
+        </style>
+    </head>
+    <body>
+        <div class="register">
+            <h1>Enter Your Username</h1> 
+            <form onsubmit="return false" method="get" id="registerForm">
+                <input type="text" id="userName" name="userName"><br><br>
+            </form>
+            <button type="submit" form="registerForm" value="Submit" onclick="register(userName.value)">Submit</button>
+            <p class="alert" id="errors"></p>
+        </div>
+        <script src="/js/main.js"></script>
+    </body>
+</html>

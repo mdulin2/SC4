@@ -1,0 +1,16 @@
+## Solution 
+- There is a signal handler for SIGINT, otherwise known as Cntrl+C
+	- When Cntrl+C is pressed on the first time, the program will go to the code at ``sig_handler`` no matter WHAT is going on. 
+	- After this, it will recursively call the 'start' function again. 
+- Why does this matter? The code will STOP in its tracks no matter where we are at in the code! 
+	- The save function 'clears' the save file by setting it to all 1s. 
+	- If we interrupt the code after the clear but before the save, the saved slot will be all 1s!
+- If we check the score after performing this, the score will be higher than the high score, giving us the flag. 
+- Inputs: 
+	- 0 - choose slot 0
+	- 2 - save the game
+	- Cntrl + C - done AFTER the text 'Clearing previous game' but BEFORE 'Saving game' appears. 
+	- Enter
+	- 0 - Choose same slot as before
+	- 3 - Check high score
+- Flag: SC4{Fau1tInJect1on0Rreetran3y}

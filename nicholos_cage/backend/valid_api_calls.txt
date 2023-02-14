@@ -1,0 +1,26 @@
+## A list of valid API calls 
+
+make noise: 
+- Considering this a library, try to be loud 
+- curl "IP:5000/make_noise"
+
+get all books by an author: 
+- Get the books written by a particular author 
+- The below request has an additional parameter for the name of the author 
+- curl "IP:5000/books_by_author?name="JK%20Rowling" 
+
+Check Out a Book:
+- Check out a book by its ID
+- curl -X PATCH "http://127.0.0.1:5000/checkout?book_id=1"
+
+Check In a Book:
+- Check In a book by its ID
+- curl -X PATCH "http://127.0.0.1:5000/checkin?book_id=1"
+
+Get all books: 
+- Get all books 
+- curl "http://127.0.0.1:5000/books" 
+
+Get all books in the library: 
+- Get all owned books in the library 
+- curl "http://127.0.0.1:5000/library" 

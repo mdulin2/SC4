@@ -1,0 +1,5 @@
+Flask
+Flask-WTF
+gunicorn
+opentok
+face-recognition

@@ -1,0 +1,6 @@
+Have to manually add echo "export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/sbin:/bin" >> /home/third_priv/.bashrc
+
+For some reason, running that on Dockerfile does not work
+
+The /usr/bin directory was purposely ommitted from path so users must use full path to use sudo, and vim.
+

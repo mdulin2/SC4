@@ -1,0 +1,11 @@
+# jetbrains
+.idea/
+
+# macos
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# app
+logs/records.log

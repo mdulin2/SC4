@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <title>Magic 8-bit Ball</title>
+    <meta name="description" content="Answer questions you didn't know you had!">
+    <script>
+        function handle() {
+            fetch('url_filler')
+            .then((response) => response.json())
+            .then(function(data){
+                document.getElementById("response").innerHTML = data['body'];         
+            })
+            .catch(function(error) {
+                console.log('Request failed:', error.message);
+            });
+        }  
+    </script>
+</head>
+
+<body style="background-color:black; font-family:'Courier New', Courier, monospace; color:white">
+    <center>
+        <h1>
+            hello master,
+        </h1>
+        <h1>
+            ask a question and shake the magic 8-bit ball
+        </h1>
+        <textarea rows="4" cols="50" display:block></textarea>
+        <br><br>
+        <button onClick="handle()" style="height:30px;width:100px; font-family:'Courier New', Courier, monospace;"><b>Shake</b></button>
+        <br><br>
+        <h2 id="response"></h2>
+    </center>
+</body>
+</html>
+
